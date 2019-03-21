@@ -1,26 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {BrowserRouter as Router,Route} from 'react-router-dom'
+import{Provider} from 'react-redux';
+import store from './store';
+
 import './App.css';
+import Landing from './components/layaout/Landing'
+import Footer from './components/layaout/Footer'
+import Navbar from './components/layaout/Navbar'
+import Register from './components/auth/Register'
+import Login from './components/auth/Login'
+import LoginEntreprise from './components/auth/LoginEntreprise'
+import RegisterEntreprise from './components/auth/RegisterEntreprise'
+
+
 
 class App extends Component {
   render() {
     return (
+      <Provider store={store}>
+      <Router>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+     
+       <Navbar/>
+     
+       <Route exact path='/' component={Landing}/>
+      <div className="container">
+      <Route exact path="/register" component={Register}/>
+      <Route exact path="/login" component={Login}/>
+      <Route exact path="/loginEntreprise" component={LoginEntreprise}/>
+      
+      <Route exact path="/registerEntreprise" component={RegisterEntreprise}/>
       </div>
+      
+       <Footer/>
+      </div>
+     </Router> 
+     </Provider>
     );
   }
 }
