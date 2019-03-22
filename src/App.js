@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router,Route} from 'react-router-dom'
 import{Provider} from 'react-redux';
 import store from './store';
+import jwt_decode from 'jwt-decode';
+import setAuthToken from './utils/setAuthToken';
+import { setCurrentStudent, logoutStudent } from './actions/authActions';
 
 import './App.css';
 import Landing from './components/layaout/Landing'
@@ -12,6 +15,7 @@ import Login from './components/auth/Login'
 import LoginEntreprise from './components/auth/LoginEntreprise'
 import RegisterEntreprise from './components/auth/RegisterEntreprise'
 
+//check for token
 
 
 class App extends Component {

@@ -1,11 +1,18 @@
-import { SET_CURRENT_USER } from "../../../../formation/tiktok/8. Redux & Authentication/7.1 devconnector_S8.zip/devconnector_S8/client/src/actions/types";
-
+import {SET_CURRENT_STUDENT } from '../actions/types';
+import isEmpty from '../validation/is-empty'
 const initialState={
     isAuthenticated:false,
-    user:{}
+    student:{},
+    
 }
-export default finction(state=initialState,action){
+export default function(state =initialState, action) {
  switch(action.type){
+     case SET_CURRENT_STUDENT:
+     return{
+         ...state,
+         isAuthenticated: !isEmpty (action.payload),
+         student : action.payload
+     }
      default:return state;
  }
 }
