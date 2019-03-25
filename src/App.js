@@ -18,9 +18,10 @@ import Dashboard from './components/dashboard/Dashboard'
 import { clearCurrentProfileStudent } from './actions/profileStudent';
 import PrivateRoute from './components/common/PrivateRoute';
 import CreateStudentProfile from './components/createStudentProfile/CreateStudentProfile'
-
-
-
+import EditStudentProfile from './components/editStudentProfile/EditStudentProfile'
+import AddExperience from './components/add-credentials/AddExperience'
+import AddEducation from './components/add-credentials/AddEducation';
+import ProfilesStudent from './components/profiles-student/ProfilesStudent'
 //check for token
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -55,11 +56,21 @@ class App extends Component {
       <Route exact path="/register" component={Register}/>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/loginEntreprise" component={LoginEntreprise}/>
+      <Route exact path="/profiles-student" component={ProfilesStudent}/>
       <Switch>
       <PrivateRoute exact path="/dashboard" component={Dashboard}/>
       </Switch>
       <Switch>
       <PrivateRoute exact path="/create-student-profile" component={CreateStudentProfile}/>
+      </Switch>
+      <Switch>
+      <PrivateRoute exact path="/edit-profile-student" component={EditStudentProfile}/>
+      </Switch>
+      <Switch>
+      <PrivateRoute exact path="/add-experience" component={AddExperience}/>
+      </Switch>
+      <Switch>
+      <PrivateRoute exact path="/add-education" component={AddEducation}/>
       </Switch>
       <Route exact path="/registerEntreprise" component={RegisterEntreprise}/>
       </div>

@@ -1,4 +1,5 @@
-import {GET_PROFILE_STUDENT, PROFILE_STUDENT_LOADING, CLEAR_CURRENT_STUDENT_PROFILE} from '../actions/types' 
+import {GET_PROFILE_STUDENT, PROFILE_STUDENT_LOADING, CLEAR_CURRENT_STUDENT_PROFILE,
+    GET_PROFILES_STUDENT} from '../actions/types' 
 const initilState ={
     profileStudent : null,
     profilesStudent : null,
@@ -22,7 +23,12 @@ export default function(state = initilState, action){
              ...state,
              profileStudent:null
          };
-
+         case  GET_PROFILES_STUDENT:
+         return {
+             ...state,
+             profilesStudent:action.payload,
+             loading: false
+         };
         default:
         return state;
     } 

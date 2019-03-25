@@ -25,6 +25,11 @@ import {clearCurrentProfileStudent} from '../../actions/profileStudent'
      logout
      </a>
       </li>
+      <li className="nav-item">
+          <Link className="nav-link" to="/dashboard">
+            Dashboard
+          </Link>
+        </li>
       </ul>
     )
     const guestLinks = (
