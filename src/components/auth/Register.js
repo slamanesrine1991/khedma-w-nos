@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import {connect } from 'react-redux';
 
+import {connect } from 'react-redux';
+import TextFieldGroup from '../common/TextFieldGroup'
 import {registerStudent} from '../../actions/authAction';
 class Register extends Component {
     constructor(){
@@ -58,77 +58,63 @@ class Register extends Component {
               <h1 className="display-4 text-center">Sign Up</h1>
               <p className="lead text-center">Create your Student account</p>
               <form noValidate onSubmit={this.onSubmit }  >
-                <div className="form-group">
-                  <input type="text" 
-                   className={classnames('form-control form-control-lg', {
-                    'is-invalid': errors.name
-                  })}
-                placeholder="Name" 
-                  name="name" required onChange={this.handleChange}
-                  value={this.state.name}/>
-                  {errors.name && (
-                    <div className="invalid-feedback">{errors.name}</div>
-                  )}
-                </div>
+
+              <TextFieldGroup
+                  placeholder="Name"
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                  error={errors.name}
+                />
+                 <TextFieldGroup
+                  placeholder="LastName"
+                  name="lastName"
+                  value={this.state.lastName}
+                  onChange={this.handleChange}
+                  error={errors.lastName}
+                />
+                <TextFieldGroup
+                  placeholder="Email"
+                  name="email"
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                  error={errors.email}
+            
+                />
+                <TextFieldGroup
+                  placeholder="Birthday date"
+                  name="birthDate"
+                  type="date"
+                  value={this.state.birthDate}
+                  onChange={this.handleChange}
+                  error={errors.birthDate}
+            
+                />
+
+                <TextFieldGroup
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                  error={errors.password}
+                />
+                <TextFieldGroup
+                  placeholder="Confirm Password"
+                  name="password2"
+                  type="password"
+                  value={this.state.password2}
+                  onChange={this.handleChange}
+                  error={errors.password2}
+                />
+              
 
 
-                <div className="form-group">
-                  <input type="text" 
-                   className={classnames('form-control form-control-lg', {
-                    'is-invalid': errors.lastname
-                  })}
-                  placeholder="Last Name" 
-                  name="lastName"  onChange={this.handleChange}
-                  value={this.state.lastName}/>
-                   {errors.lastname && (
-                    <div className="invalid-feedback">{errors.lastname}</div>
-                  )}
-                </div>
 
 
-                <div className="form-group">
-                  <input type="email"
-                  className={classnames('form-control form-control-lg', {
-                    'is-invalid': errors.email
-                  })}
-                   placeholder="Email Address" name="email"
-                    value={this.state.email} 
-                   onChange={this.handleChange}/>
-                  {errors.email && (
-                    <div className="invalid-feedback">{errors.email}</div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input type="date"
-                   className={classnames('form-control form-control-lg', {
-                    'is-invalid': errors.birthDate
-                  })}
-                   placeholder="Birthday date" name="birthDate" value={this.state.birthDate} onChange={this.handleChange}/>
-                 {errors.birthDate && (
-                    <div className="invalid-feedback">{errors.birthDate}</div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input type="password" 
-                  className={classnames('form-control form-control-lg', {
-                    'is-invalid': errors.password
-                  })}
-                  placeholder="Password" name="password"  value={this.state.password} onChange={this.handleChange}/>
-                  {errors.password && (
-                    <div className="invalid-feedback">{errors.password}</div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input type="password" 
-                   className={classnames('form-control form-control-lg', {
-                    'is-invalid': errors.password2
-                  })}
-                   placeholder="Confirm Password" 
-                  name="password2"  value={this.state.password2} onChange={this.handleChange}/>
-                  {errors.password2 && (
-                    <div className="invalid-feedback">{errors.password2}</div>
-                  )}
-                </div>
+
+               
                 
                 <input type="submit" className="btn btn-info btn-block " value="Valider" />
               </form>

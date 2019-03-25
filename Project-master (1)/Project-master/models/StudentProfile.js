@@ -1,4 +1,4 @@
-const mongoose = require ('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Create Schema
@@ -32,7 +32,7 @@ const StudentProfileSchema = new Schema({
     bio: {
         type: String
     },
-    githibusername: {
+    githubusername: {
         type: String
     },
     experience: [
@@ -117,4 +117,4 @@ const StudentProfileSchema = new Schema({
     }
 });
 
-module.exports = studentProfile = mongoose.model('studentprofile', StudentProfileSchema);
+module.exports = StudentProfile = mongoose.model('studentprofile', StudentProfileSchema);

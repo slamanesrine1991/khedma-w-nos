@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router,Route} from 'react-router-dom'
+import {BrowserRouter as Router,Route, Switch} from 'react-router-dom'
 import{Provider} from 'react-redux';
 import store from './store';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
-import { setCurrentStudent, logoutStudent } from './actions/authActions';
+import { setCurrentStudent, logoutStudent } from './actions/authAction';
 
 import './App.css';
 import Landing from './components/layaout/Landing'
@@ -14,9 +14,32 @@ import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import LoginEntreprise from './components/auth/LoginEntreprise'
 import RegisterEntreprise from './components/auth/RegisterEntreprise'
+import Dashboard from './components/dashboard/Dashboard'
+import { clearCurrentProfileStudent } from './actions/profileStudent';
+import PrivateRoute from './components/common/PrivateRoute';
+import CreateStudentProfile from './components/createStudentProfile/CreateStudentProfile'
+
+
 
 //check for token
-
+if (localStorage.jwtToken) {
+  // Set auth token header auth
+  setAuthToken(localStorage.jwtToken);
+  // Decode token and get user info and exp
+  const decoded = jwt_decode(localStorage.jwtToken);
+  // Set user and isAuthenticated
+  store.dispatch(setCurrentStudent(decoded));
+   // Check for expired token
+   const currentTime = Date.now() / 1000;
+   if (decoded.exp < currentTime) {
+     // Logout user
+     store.dispatch(logoutStudent());
+     //  Clear current Profile
+     store.dispatch(clearCurrentProfileStudent());
+     // Redirect to login
+     window.location.href = '/login';
+   }
+}
 
 class App extends Component {
   render() {
@@ -32,7 +55,12 @@ class App extends Component {
       <Route exact path="/register" component={Register}/>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/loginEntreprise" component={LoginEntreprise}/>
-      
+      <Switch>
+      <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+      </Switch>
+      <Switch>
+      <PrivateRoute exact path="/create-student-profile" component={CreateStudentProfile}/>
+      </Switch>
       <Route exact path="/registerEntreprise" component={RegisterEntreprise}/>
       </div>
       
