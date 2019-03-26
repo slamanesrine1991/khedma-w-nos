@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import classnames from 'classnames';
-class RegisterEntreprise extends Component {
+class RegisterCompany extends Component {
     constructor(){
         super();
         this.state={
@@ -25,7 +25,7 @@ class RegisterEntreprise extends Component {
    onSubmit(e){
        e.preventDefault();
       
-       const newEntreprise={
+       const newCompany={
            name:this.state.name,
            email:this.state.email,
            address:this.state.address,
@@ -34,7 +34,7 @@ class RegisterEntreprise extends Component {
            password2:this.state.password2
        };
         
-        axios.post('/api/companyRegister',newEntreprise)
+        axios.post('/api/companyRegister',newCompany)
         .then(res=>console.log(res.data)) 
         .catch(err=>this.setState({errors:err.response.data}))
    }
@@ -125,4 +125,4 @@ class RegisterEntreprise extends Component {
     )
   }
 }
-export default RegisterEntreprise;
+export default RegisterCompany;

@@ -23,30 +23,7 @@ import { createProfileStudent } from '../../actions/profileStudent';
        skills: '',
        githubusername: '',
        bio: '',
-    //   experience: [
-    //     {
-    //         title: '',
-    //         company: '',
-    //         location:'',
-    //         from :'',
-    //         to: '',
-    //         current:'',
-    //         description:''
-    //     }
-    // ],
-    // education: [
-    //     {
-    //         school: '',
-    //         degree:'',
-    //         fieldofstudy:'',
-    //         from:'',
-    //         to: {
-    //             type: Date,
-    //         },
-    //         current:'',
-    //         description: '',
-    //     }
-    // ],
+    
        errors: {},
        twitter: '',
       facebook: '',

@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
     if (this.props.auth.isAuthenticated) {
       this.props.history.push('/dashboard');
     }
+    if (this.props.authCompany.isAuthorize){
+       this.props.history.push('/dashbordCompany')
+    }
   }
   render() {
     return (
@@ -31,11 +34,13 @@ import { connect } from 'react-redux';
 }
 
 Landing.propTypes = {
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  authCompany: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  authCompany : state.authCompany
 });
 
 

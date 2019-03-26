@@ -108,14 +108,7 @@ class Register extends Component {
                   onChange={this.handleChange}
                   error={errors.password2}
                 />
-              
-
-
-
-
-
-               
-                
+                                            
                 <input type="submit" className="btn btn-info btn-block " value="Valider" />
               </form>
             </div>

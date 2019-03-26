@@ -12,16 +12,20 @@ import Footer from './components/layaout/Footer'
 import Navbar from './components/layaout/Navbar'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
-import LoginEntreprise from './components/auth/LoginEntreprise'
-import RegisterEntreprise from './components/auth/RegisterEntreprise'
+import LoginCompany from './components/auth/LoginCompany'
+import RegisterCompany from './components/auth/RegisterCompany'
 import Dashboard from './components/dashboard/Dashboard'
+import DashboardCompany from './components/dashboard/DashboardCompany'
 import { clearCurrentProfileStudent } from './actions/profileStudent';
 import PrivateRoute from './components/common/PrivateRoute';
+import PrivateRouteCompany from './components/common/PrivateRouteCompany';
 import CreateStudentProfile from './components/createStudentProfile/CreateStudentProfile'
 import EditStudentProfile from './components/editStudentProfile/EditStudentProfile'
 import AddExperience from './components/add-credentials/AddExperience'
 import AddEducation from './components/add-credentials/AddEducation';
 import ProfilesStudent from './components/profiles-student/ProfilesStudent'
+import ProfileStudent from './components/profile-student/ProfileStudent'
+import CreateCompanyProfile from './components/createCompanyProfile/CreateCompanyProfile'
 //check for token
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -32,14 +36,14 @@ if (localStorage.jwtToken) {
   store.dispatch(setCurrentStudent(decoded));
    // Check for expired token
    const currentTime = Date.now() / 1000;
-   if (decoded.exp < currentTime) {
-     // Logout user
-     store.dispatch(logoutStudent());
-     //  Clear current Profile
-     store.dispatch(clearCurrentProfileStudent());
-     // Redirect to login
-     window.location.href = '/login';
-   }
+  //  if (decoded.exp < currentTime) {
+  //    // Logout user
+  //    store.dispatch(logoutStudent());
+  //    //  Clear current Profile
+  //    store.dispatch(clearCurrentProfileStudent());
+  //    // Redirect to login
+  //    window.location.href = '/login';
+  //  }
 }
 
 class App extends Component {
@@ -55,8 +59,9 @@ class App extends Component {
       <div className="container">
       <Route exact path="/register" component={Register}/>
       <Route exact path="/login" component={Login}/>
-      <Route exact path="/loginEntreprise" component={LoginEntreprise}/>
+      <Route exact path="/loginCompany" component={LoginCompany}/>
       <Route exact path="/profiles-student" component={ProfilesStudent}/>
+      <Route exact path="/studentprofile/:handle" component={ProfileStudent}/>
       <Switch>
       <PrivateRoute exact path="/dashboard" component={Dashboard}/>
       </Switch>
@@ -72,7 +77,13 @@ class App extends Component {
       <Switch>
       <PrivateRoute exact path="/add-education" component={AddEducation}/>
       </Switch>
-      <Route exact path="/registerEntreprise" component={RegisterEntreprise}/>
+      <Route exact path="/registerCompany" component={RegisterCompany}/>
+      <Switch>
+      <PrivateRouteCompany exact path="/dashboardCompany" component={DashboardCompany}/>
+      </Switch>
+      <Switch>
+      <PrivateRouteCompany exact path="/create-company-profile" component={CreateCompanyProfile}/>
+      </Switch>
       </div>
       
        <Footer/>

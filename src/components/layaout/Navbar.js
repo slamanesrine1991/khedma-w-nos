@@ -3,7 +3,9 @@ import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types';
 import {connect } from 'react-redux';
 import {logoutStudent} from '../../actions/authAction' 
-import {clearCurrentProfileStudent} from '../../actions/profileStudent' 
+import {logoutCompany} from '../../actions/authCompanyAction' 
+import {clearCurrentProfileStudent} from '../../actions/profileStudent' ;
+import {clearCurrentProfileCompany} from '../../actions/profileCompanyAction' 
  class Navbar extends Component {
 
   onLogoutClick(e) {
@@ -12,8 +14,45 @@ import {clearCurrentProfileStudent} from '../../actions/profileStudent'
     this.props.logoutStudent();
   }
 
+  onLogoutCompanyClick(event){
+    event.preventDefault();
+    this.props.clearCurrentProfileCompany();
+    this.props.logoutCompany();
+  }
+
   render() {
     const { isAuthenticated, student } = this.props.auth;
+   const { isAuthorize, company } = this.props.authCompany;
+   const authcompanyLinks = (
+    <ul className="navbar-nav ml-auto">
+      
+    <li className="nav-item">
+   
+   <a href=""  onClick={this.onLogoutCompanyClick.bind(this)} className="nav-link">
+   <img className="rounded-circle"
+   src={company.avatar} alt={company.name} style={{width:'25px',marginRight:'10px'}}/>
+   logoutCompany
+   </a>
+    </li>
+    <li className="nav-item">
+        <Link className="nav-link" to="/dashboardCompany">
+          Dashboard Company
+        </Link>
+      </li>
+    </ul>
+   )
+   const guestcompanyLinks =(
+    <ul className="navbar-nav ml-auto">
+    <li className="nav-item">
+    <Link className="nav-link" to='/registerCompany'>Sign Up Company</Link>
+
+    </li>
+    <li className="nav-item">
+    <Link className="nav-link" to='/loginCompany'>Login Company</Link>
+   
+    </li>
+    </ul>
+   )
     const authLinks = (
       <ul className="navbar-nav ml-auto">
       
@@ -56,31 +95,34 @@ import {clearCurrentProfileStudent} from '../../actions/profileStudent'
       <div className="collapse navbar-collapse" id="mobile-nav">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <a className="nav-link" href="profiles.html"> Developers
-            </a>
+          <Link className="nav-link" to="/profiles-student">
+                  {' '}
+                  Students
+                </Link>
           </li>
         </ul>
 
         <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
+          {/* <li className="nav-item">
           <Link className="nav-link" to='/register'>Sign Up</Link>
      
           </li>
           <li className="nav-item">
           <Link className="nav-link" to='/login'>Login</Link>
          
-          </li>
+          </li> 
           <li className="nav-item">
-          <Link className="nav-link" to='/loginEntreprise'>Login Entreprise</Link>
+          <Link className="nav-link" to='/loginCompany'>Login Entreprise</Link>
          
           </li>
           <li className="nav-item">
-          <Link className="nav-link" to='/registerEntreprise'>Sign up Entreprise</Link>
+          <Link className="nav-link" to='/registerCompany'>Sign up Entreprise</Link>
          
-          </li>
+          </li>*/}
           
         </ul>
         {isAuthenticated ? authLinks : guestLinks}
+        {isAuthorize ? authcompanyLinks : guestcompanyLinks}
       </div>
     </div>
   </nav>
@@ -88,12 +130,14 @@ import {clearCurrentProfileStudent} from '../../actions/profileStudent'
     )
   }
 }
-Navbar.propTypes = {
-  logoutStudent: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
-};
+// Navbar.propTypes = {
+//   logoutStudent: PropTypes.func.isRequired,
+//   auth: PropTypes.object.isRequired,
+//   authCompany: PropTypes.object.isRequired
+// };
 
 const mapStateToProps = (state) => ({
-auth : state.auth
+auth : state.auth,
+authCompany : state.authCompany,
 });
-export default connect(mapStateToProps, { logoutStudent , clearCurrentProfileStudent })(Navbar);
+export default connect(mapStateToProps, { logoutStudent ,logoutCompany,clearCurrentProfileCompany, clearCurrentProfileStudent })(Navbar);
