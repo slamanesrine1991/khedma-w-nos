@@ -10,7 +10,8 @@ const PrivateRouteCompany = ({ component: Component, authCompany, ...rest }) => 
       authCompany.isAuthorize === true ? (
         <Component {...props} />
       ) : (
-        <Redirect to="/loginCompany" />
+        // <Redirect to="/loginCompany" />
+        <Redirect to="/" />
       )
     }
   />

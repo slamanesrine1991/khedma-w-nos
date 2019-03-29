@@ -3,8 +3,9 @@ import isEmpty from '../../validation/is-empty';
  class ProfileStudentHeader extends Component {
   render() {
     const { profileStudent } = this.props;
-    console.log(profileStudent)
-    return (
+    return !(profileStudent && profileStudent.student) ? (
+      "Loading"
+    ) : (
       <div>
         <div className="row">
        

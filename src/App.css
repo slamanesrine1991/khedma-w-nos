@@ -38,3 +38,180 @@ img {
   color: #bbb !important;
 }
 
+body {
+  background-color: #fff0e8 !important;
+}
+
+.App {
+  margin: 64px 10% 0;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+/* navbar */
+
+.dropdown-user {
+  top: 35px !important;
+}
+.navbar-button {
+  color: white !important;
+  min-width: fit-content !important;
+}
+.navbar-elements {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+/* side menu */
+
+.side-menu {
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/*page d'affichage des offres*/
+
+.offer-card {
+  margin: 15px;
+  box-shadow: 0 0 16px #ccc;
+  min-width: 415px !important;
+}
+.logo {
+  border: 1px solid lightgrey;
+  width: 5em;
+  height: 5em;
+  margin-right: 15px;
+  padding: 5px;
+  background-color: white;
+}
+.offer-card-header {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.offer-presentation {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+.offer-card-infos {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.offer-card-info {
+  width: 20%;
+}
+.info-title {
+  font-size: 13px;
+  line-height: 19px;
+}
+.offer-card-text {
+  overflow: hidden;
+  position: relative;
+  line-height: 1.2em;
+  /*max-height must be 3 x line-height */
+  max-height: 3.6em;
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+}
+/* styles for '...' to hide text if it more than 3 lines*/
+.offer-card-text:before {
+  content: "...";
+  position: absolute;
+  right: 4px;
+  bottom: 0px;
+}
+.offer-card-text:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
+}
+.offer-card-skills {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.offer-card-buttons {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.default-button {
+  background-color: #079681 !important;
+  color: white !important;
+  padding: 8px 12px !important;
+}
+.default-button:hover {
+  box-shadow: 0 0 26px #ccc;
+  background-color: #007a69 !important;
+}
+
+/*page de présentation d'un job*/
+
+.job-presentation {
+ flex: 1
+}
+.job-presentation-card {
+  margin-top: 20px;
+  width: "80%";
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+.job-presentation-header {
+  background-color: #f9f9f9;
+  border-bottom: 1px solid rgb(224, 224, 224);
+  padding: 20px 8% !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.job-presentation-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.job-presentation-body {
+  padding: 20px 8% !important;
+}
+.job-presentation-section {
+  border-bottom: 1px solid rgb(224, 224, 224);
+  padding: 10px 0;
+  margin-bottom: 10px !important;
+}
+.job-presentation-footer {
+  padding: 0 8% 20px !important;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.card-company-presentation {
+  border-left: 1px solid rgb(224, 224, 224);
+  padding: 20px 2em 10px;
+  width: 30%;
+  min-width: min-content;
+}
+.card-company-presentation-header {
+  display: flex;
+  align-items: center;
+}
+.card-company-presentation-info {
+  margin: 1px !important
+}
+.save-icon {
+  font-size: 34px !important;
+}
+.icon-margin {
+  margin: 0 8px;
+}

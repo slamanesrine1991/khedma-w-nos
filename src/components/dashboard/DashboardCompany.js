@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrentProfileCompany} from '../../actions/profileCompanyAction';
+import { getCurrentProfileCompany,deleteCompanyAccount} from '../../actions/profileCompanyAction';
 import Spinner from '../common/Spinner';
 import ProfileCompanyActions from './ProfileCompanyAction';
-
+//import Offre from './Offre';
 class DashboardCompany extends Component {
   componentDidMount() {
     this.props.getCurrentProfileCompany();
   }
-  
+  onDeleteClick(e) {
+    this.props.deleteCompanyAccount();
+  }
   render() {
     const { company } = this.props.authCompany;
     const { profileCompany, loading } = this.props.profileCompany;
@@ -28,10 +30,20 @@ class DashboardCompany extends Component {
           <Link to={`/companyprofile/${profileCompany.handle}`}>{company.name}</Link>  
           </p>
           <ProfileCompanyActions/>
-         
-         
+       
+          {/* <Offre offre ={profileCompany.offre}/> */}
+           
+          <div style={{ marginBottom: '60px' }} />
+ <button
+   onClick={this.onDeleteClick.bind(this)}
+   className="btn btn-danger"
+ >
+   Delete Account
+ </button>
+
            
           </div>
+
 
       
         );
@@ -81,4 +93,4 @@ const mapStateToProps = state => ({
   authCompany: state.authCompany
 });
 
-export default connect(mapStateToProps, { getCurrentProfileCompany })(DashboardCompany);
+export default connect(mapStateToProps, { getCurrentProfileCompany,deleteCompanyAccount })(DashboardCompany);

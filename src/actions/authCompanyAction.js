@@ -6,7 +6,7 @@ import setAuthToken from '../utils/setAuthToken';
 export const registerCompany=(companyData,history)=> dispatch =>{
 
   axios.post('/api/companyRegister', companyData)
-       .then(res=>history.push('/componyLogin')) 
+       .then(res=>history.push('/loginCompany')) 
        .catch(err=>dispatch({
            type : GET_ERRORS,
            payload : err.response.data
