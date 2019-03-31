@@ -34,7 +34,7 @@ OutlinedButtons = withStyles(styles)(OutlinedButtons);
 export class JobOffer extends Component {
   render() {
     const { offer, classes } = this.props;
-    return !offer ? (
+    return !offer || !offer.company ? (
       "Loading" 
     ) : (
       <div>

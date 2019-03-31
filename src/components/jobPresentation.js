@@ -44,7 +44,9 @@ class JobPresentation extends React.Component {
     const { classes, offer, companyProfile } = props;
     const { isAuthenticated, student } = this.props.auth;
     const { isTestify, admin } = this.props.authAdmin;
-    return !(this.props.profileStudent && offer && companyProfile) ? (
+    return !(this.props.profileStudent && this.props.profileStudent.profilesStudent) ? (
+      "Loading"
+    ) : !(offer && companyProfile) ? (
       "Loading"
     ) : (
       <Card className="job-presentation-card">
@@ -121,10 +123,11 @@ class JobPresentation extends React.Component {
                 <div>
                   {offer.candidate[0] ? (
                     offer.candidate
-                      .map(el =>
-                        this.props.profileStudent.find(
-                          element => element.student._id === el._id
-                        )
+                      .map(el => {
+                          return this.props.profileStudent.profilesStudent.find(
+                            element => (element.student)? (element.student._id === el._id) : ""
+                          )
+                        }
                       )
                       .map(el => (
                         <Button
@@ -259,8 +262,8 @@ const mapStateToProps = (state, { id }) => {
     authAdmin: state.authAdmin,
     companyProfile:
       offer &&
-      state.companiesReducer.find(el => el.company.name === offer.company.name),
-    profileStudent: state.profileStudent.profilesStudent
+      state.companiesReducer.find(el => (el.company) ? (el.company.name === offer.company.name): ""),
+    profileStudent: state.profileStudent
   };
 };
 

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import Spinner from '../common/Spinner';
-import ProfileStudentItem from './ProfileStudentItem';
-import { getStudentProfiles } from '../../actions/profileStudent';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import Spinner from "../common/Spinner";
+import ProfileStudentItem from "./ProfileStudentItem";
+import { getStudentProfiles } from "../../actions/profileStudent";
 
 class ProfilesStudent extends Component {
   componentDidMount() {
@@ -18,7 +18,8 @@ class ProfilesStudent extends Component {
       profileStudentItems = <Spinner />;
     } else {
       if (profilesStudent.length > 0) {
-        profileStudentItems = profilesStudent.map(profile => (
+        profileStudentItems = profilesStudent.map(profile => 
+          (
           <ProfileStudentItem key={profile._id} profileStudent={profile} />
         ));
       } else {
@@ -31,9 +32,9 @@ class ProfilesStudent extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display-4 text-center">Developer Profiles</h1>
+              <h1 className="display-4 text-center">Profiles</h1>
               <p className="lead text-center">
-                Browse and connect with developers
+                Browse and connect with students
               </p>
               {profileStudentItems}
             </div>
@@ -53,4 +54,7 @@ const mapStateToProps = state => ({
   profileStudent: state.profileStudent
 });
 
-export default connect(mapStateToProps, { getStudentProfiles })(ProfilesStudent);
+export default connect(
+  mapStateToProps,
+  { getStudentProfiles }
+)(ProfilesStudent);

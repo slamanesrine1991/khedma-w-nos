@@ -97,11 +97,11 @@ export const getStudentProfiles = () => dispatch => {
         payload: res.data
       })
     )
-    .catch(err =>
-      dispatch({
-        type: GET_PROFILES_STUDENT ,
-        payload: null
-      })
+    .catch(err => console.log(err)
+      // dispatch({
+      //   type: GET_PROFILES_STUDENT ,
+      //   payload: null
+      // })
     );
 };
 

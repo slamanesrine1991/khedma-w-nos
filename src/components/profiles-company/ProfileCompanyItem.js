@@ -6,8 +6,7 @@ import isEmpty from '../../validation/is-empty';
 class ProfileCompanyItem extends Component {
   render() {
     const { profileCompany } = this.props;
-console.log(profileCompany.company.name)
-    return (
+    return !(profileCompany && profileCompany.company) ? 'Loading' : (
       <div className="card card-body bg-light mb-3">
         <div className="row">
           <div className="col-2">

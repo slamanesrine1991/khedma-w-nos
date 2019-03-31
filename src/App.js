@@ -179,14 +179,11 @@ class App extends Component {
                 component={EditCompanyProfile}
               />
             </Switch>
-
-            <Switch>
-              <PrivateRouteCompany
+              <Route
                 exact
                 path="/companyprofile/:handle"
                 component={ProfileCompany}
               />
-            </Switch>
             <Switch>
               <PrivateRouteAdmin
                 exact
